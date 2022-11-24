@@ -55,7 +55,7 @@ namespace Garage
             }
             else
             {
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("0. Back");
             }
             
             Console.WriteLine("\n #####################################################\n");

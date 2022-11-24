@@ -103,11 +103,13 @@ internal class Program
                                         case 0:
                                             subLevel2Exit = false; break;
                                         case 1: //Add
-
+                                            //Console.WriteLine("Under Construction!!!");
                                             break;
                                         case 2: //Edit
+                                            //Console.WriteLine("Under Construction!!!");
                                             break;
                                         case 3: //remove
+                                            //Console.WriteLine("Under Construction!!!");
                                             break;
                                         default:
                                             break;
@@ -124,9 +126,60 @@ internal class Program
                                         case 0:
                                             subLevel3Exit = false; break;
                                         case 1: //Add
+                                            Console.WriteLine("\n\n ==> Add new Vehicle <==");
+                                            Console.Write("Please enter a place of vehicle in the Garage: ");
+                                            string vplace = Console.ReadLine();
+                                            Console.Write("Please enter a licensePlate of vehicle: ");
+                                            string vlicensePlate = Console.ReadLine();
+                                            Console.Write("Please enter a color (Red, Green, Blue, Black, Gray, White, Silver, Gold): ");
+                                            string vcolor = Console.ReadLine();
+                                            Console.Write("Please enter a wheels number: ");
+                                            int vwheels=Int32.Parse(Console.ReadLine());
+                                            Console.Write("Please enter a owner name: ");
+                                            string vname = Console.ReadLine();
+                                            Console.Write("Please enter a vehicle max speed (KM / H): ");
+                                            int vspeed = Int32.Parse(Console.ReadLine());
+                                            Console.Write("Please enter a engin size: ");
+                                            int venginSize = Int32.Parse(Console.ReadLine());
+                                            Console.Write("Please enter a cylender numbers: ");
+                                            int vcylender = Int32.Parse(Console.ReadLine());
+                                            Console.Write("Please enter a fuel type (Benzine, Diesel, Gas, Electric): ");
+                                            Fuel vfuel;
+                                            switch (Console.ReadLine().ToUpper())
+                                            {
+                                                case "BENZINE":
+                                                    vfuel=Fuel.Benzine; break;
+                                                case "DIESEL":
+                                                    vfuel=Fuel.Diesel; break;
+                                                case "GAS":
+                                                    vfuel=Fuel.Gas; break;
+                                                case "ELECTRIC":
+                                                    vfuel = Fuel.Electric; break;
+                                                default:
+                                                    vfuel= Fuel.Benzine; break;
+                                            }
+                                            Vehicle v = new Vehicle(vplace, vlicensePlate, vcolor, vwheels, vname, vspeed, venginSize, vcylender, vfuel);
 
                                             break;
                                         case 2: //Edit
+                                            Console.Write("Please enter a licensePlate to edit vehicle information: ");
+                                            string lp = Console.ReadLine();
+                                            Vehicle vehicle = new Vehicle();
+                                            foreach (Vehicle v1 in vehicle) { 
+                                                if (v1.LicensePlate == lp)
+                                                {
+                                                    Console.Write("place ==> " + v1.Place);
+                                                    Console.Write("licensePlate ==> "+ v1.LicensePlate);
+                                                    Console.Write("color ==> "+ v1.Color);
+                                                    Console.Write("wheels number ==> : "+v1.WheelsNumber);
+                                                    Console.Write("owner name ==> : "+v1.Owner);
+                                                    Console.Write("max speed (KM / H) ==> "+v1.Speed);
+                                                    Console.Write("engin size ==> "+v1.EnginSize);
+                                                    Console.Write("cylender numbers ==> "+v1.Cylender);
+                                                    Console.Write("fuel type ==> "+v1.Fuel);
+                                                }
+                                            }
+                                            Console.ReadKey();
                                             break;
                                         case 3: //remove
                                             break;
