@@ -6,27 +6,26 @@ internal class Program
     {
         
         Menu mn = new Menu("My Garage", "Main Menu",0);
-        
         mn.AddItemMenu("Reports");
         mn.AddItemMenu("Activity");
 
-        Menu reportSMN = new Menu("My Garage", "Reports",1);
+        Menu reportSMN = new Menu("My Garage", "Main Menu / Reports",1);
         reportSMN.AddItemMenu("List All");
         reportSMN.AddItemMenu("List Vehicle Type");
         reportSMN.AddItemMenu("List Vehicle");
         reportSMN.AddItemMenu("Find / Search");
 
-        Menu activitySMN = new Menu("My Garage", "Activity", 1);
+        Menu activitySMN = new Menu("My Garage", "Main Menu / Activity", 1);
         activitySMN.AddItemMenu("Vehicle Type");
         activitySMN.AddItemMenu("Vehicle");
         activitySMN.AddItemMenu("Garage Capacity");
 
-        Menu dataSMN = new Menu("My Garage", activitySMN.Name, 2);
+        Menu dataSMN = new Menu("My Garage", "Main Menu / Activity", 2);
         dataSMN.AddItemMenu("Add");
         dataSMN.AddItemMenu("Edit");
         dataSMN.AddItemMenu("remove");
 
-        Menu findSMN = new Menu("My Garage", "Find", 2);
+        Menu findSMN = new Menu("My Garage", "Main Menu / Reports / Find", 2);
         findSMN.AddItemMenu("Search by Licens Plate");
         findSMN.AddItemMenu("Search by Owner");
         findSMN.AddItemMenu("Search by Type");
@@ -95,11 +94,67 @@ internal class Program
                             case 0:
                                 subLevel1Exit = false; break;
                             case 1: //Vehicle Type
+                                bool subLevel2Exit = true;
+                                dataSMN.Name = "Main Menu / Activity / Vehicle Type";
+                                do
+                                {
+                                    switch (dataSMN.DrawMenu())
+                                    {
+                                        case 0:
+                                            subLevel2Exit = false; break;
+                                        case 1: //Add
 
+                                            break;
+                                        case 2: //Edit
+                                            break;
+                                        case 3: //remove
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                } while (subLevel2Exit);
                                 break;
                             case 2: //Vehicle
+                                dataSMN.Name = "Main Menu / Activity / Vehicle";
+                                bool subLevel3Exit = true;
+                                do
+                                {
+                                    switch (dataSMN.DrawMenu())
+                                    {
+                                        case 0:
+                                            subLevel3Exit = false; break;
+                                        case 1: //Add
+
+                                            break;
+                                        case 2: //Edit
+                                            break;
+                                        case 3: //remove
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                } while (subLevel3Exit);
                                 break;
                             case 3: //Garage Capacity
+                                dataSMN.Name = "Main Menu / Activity / Garage Capacity";
+                                bool subLevel4Exit = true;
+                                do
+                                {
+                                    switch (dataSMN.DrawMenu())
+                                    {
+                                        case 0:
+                                            subLevel4Exit = false; break;
+                                        case 1: //Add
+
+                                            break;
+                                        case 2: //Edit
+                                            break;
+                                        case 3: //remove
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                } while (subLevel4Exit);
                                 break;
                             default:
                                 break;
