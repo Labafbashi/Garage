@@ -164,7 +164,7 @@ internal class Program
                                         case 2: //Edit
                                             Console.Write("Please enter a licensePlate to edit vehicle information: ");
                                             string lp = Console.ReadLine();
-                                            Vehicle vehicle = new Vehicle();
+                                            Garage<Vehicle> vehicle = new Garage<Vehicle>();
                                             foreach (Vehicle v1 in vehicle) { 
                                                 if (v1.LicensePlate == lp)
                                                 {

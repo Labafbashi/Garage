@@ -31,7 +31,7 @@ namespace Garage
         Suzuki,
         Yamaha
     }
-    internal class Vehicle : IEnumerable<Vehicle>
+    internal class Vehicle 
     {
         string place;
         string licensePlate;
@@ -68,15 +68,6 @@ namespace Garage
         public int Cylender { get => cylender; set => cylender = value; }
         internal Fuel Fuel { get => fuel; set => fuel = value; }
 
-        public IEnumerator<Vehicle> GetEnumerator()
-        {
-            yield return this;
-
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return (IEnumerator)this;
-        }
+        
     }
 }
