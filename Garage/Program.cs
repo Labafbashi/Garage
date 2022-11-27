@@ -32,6 +32,7 @@ internal class Program
         findSMN.AddItemMenu("Search by Color");
         findSMN.AddItemMenu("CustomSearch");
 
+        Garage<Vehicle> garage = new Garage<Vehicle>();
 
         bool exit = true;
         do
@@ -159,26 +160,31 @@ internal class Program
                                                     vfuel= Fuel.Benzine; break;
                                             }
                                             Vehicle v = new Vehicle(vplace, vlicensePlate, vcolor, vwheels, vname, vspeed, venginSize, vcylender, vfuel);
-
                                             break;
                                         case 2: //Edit
                                             Console.Write("Please enter a licensePlate to edit vehicle information: ");
                                             string lp = Console.ReadLine();
-                                            Garage<Vehicle> vehicle = new Garage<Vehicle>();
-                                            foreach (Vehicle v1 in vehicle) { 
-                                                if (v1.LicensePlate == lp)
-                                                {
-                                                    Console.Write("place ==> " + v1.Place);
-                                                    Console.Write("licensePlate ==> "+ v1.LicensePlate);
-                                                    Console.Write("color ==> "+ v1.Color);
-                                                    Console.Write("wheels number ==> : "+v1.WheelsNumber);
-                                                    Console.Write("owner name ==> : "+v1.Owner);
-                                                    Console.Write("max speed (KM / H) ==> "+v1.Speed);
-                                                    Console.Write("engin size ==> "+v1.EnginSize);
-                                                    Console.Write("cylender numbers ==> "+v1.Cylender);
-                                                    Console.Write("fuel type ==> "+v1.Fuel);
-                                                }
+
+                                            Vehicle fv = garage.FindVehicle(lp);
+
+                                            if ( fv== null)
+                                            {
+                                                Console.WriteLine("this register number not found.");
+                                                Console.ReadKey();
                                             }
+                                            else
+                                            {
+                                                Console.Write("place of vehicle in the Garage: "+fv.Place);
+                                                Console.Write("licensePlate of vehicle: "+fv.LicensePlate);
+                                                Console.Write("color (Red, Green, Blue, Black, Gray, White, Silver, Gold): "+fv.Color);
+                                                Console.Write("wheels number: "+fv.WheelsNumber);
+                                                Console.Write("owner name: "+fv.Owner);
+                                                Console.Write("vehicle max speed (KM / H): "+fv.Speed.ToString());
+                                                Console.Write("engin size: "+fv.EnginSize.ToString());
+                                                Console.Write("cylender numbers: "+fv.Cylender.ToString());
+                                                Console.Write("fuel type (Benzine, Diesel, Gas, Electric): "+fv.Fuel);
+                                            }
+
                                             Console.ReadKey();
                                             break;
                                         case 3: //remove

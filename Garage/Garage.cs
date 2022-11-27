@@ -29,6 +29,17 @@ namespace Garage
 
         public int Capacity => capacity;
 
+        public Vehicle FindVehicle(string lp)
+        {
+            foreach (var v in vehicles) 
+            {
+                if (v.LicensePlate == lp)
+                {
+                    return v;
+                }
+            }
+            return null;
+        }
 
         public bool Park(T newVehicle)
         {
