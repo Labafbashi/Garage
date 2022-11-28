@@ -68,6 +68,21 @@ namespace Garage
         public int Cylender { get => cylender; set => cylender = value; }
         internal Fuel Fuel { get => fuel; set => fuel = value; }
 
-        
+        public Fuel ConvertToFuel(string str)
+        {
+            switch (str)
+            {
+                case "BENZINE":
+                    return Fuel.Benzine;
+                case "DIESEL":
+                    return Fuel.Diesel;
+                case "GAS":
+                    return Fuel.Gas;
+                case "ELECTRIC":
+                    return Fuel.Electric;
+                default:
+                    return Fuel.Benzine;
+            }
+        }
     }
 }
