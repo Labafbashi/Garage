@@ -56,12 +56,16 @@ internal class Program
                                 subLevel1Exit= false;
                                 break;
                             case 1: //List All
-                                garage.ListAll();
+                                Console.WriteLine("Under Construction!!!");
                                 Console.ReadKey();
                                 break; 
                             case 2: // List Vehicle Type
+                                Console.WriteLine("Under Construction!!!");
+                                Console.ReadKey();
                                 break;
                             case 3: // List Vehicle
+                                garage.ListAllVehicle();
+                                Console.ReadKey();
                                 break;
                             case 4: // Find
                                 bool subLevel2Exit = true;
@@ -73,6 +77,20 @@ internal class Program
                                             subLevel2Exit = false;
                                             break;
                                         case 1: //Search by Licens Plate
+                                            Console.Write("Please enter a licensePlate: ");
+                                            string lp = Console.ReadLine();
+                                            fv = garage.FindVehicle(lp);
+                                            if (fv != null)
+                                            {
+                                                garage.PrintHeader();
+                                                garage.PrintVehicle(fv);
+                                                garage.PrintFooter();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("This Vehicle not found.");
+                                            }
+                                            Console.ReadKey();
                                             break;
                                         case 2: //Search by Owner
                                             break;
@@ -143,25 +161,28 @@ internal class Program
                                             Console.Write("Please enter a color (Red, Green, Blue, Black, Gray, White, Silver, Gold): ");
                                             v.Color = Console.ReadLine();
 
-                                            Console.Write("Please enter a wheels number: ");
-                                            v.WheelsNumber  = NumberInput();
-
                                             Console.Write("Please enter a owner name: ");
                                             v.Owner = Console.ReadLine();
+
+                                            Console.Write("Please enter a fuel type (Benzine, Diesel, Gas, Electric): ");
+                                            Fuel vfuel;
+                                            v.Fuel = v.ConvertToFuel(Console.ReadLine().ToUpper());
+
+                                            Console.Write("Please enter a wheels number: ");
+                                            v.WheelsNumber = NumberInput();
 
                                             Console.Write("Please enter a vehicle max speed (KM / H): ");
                                             v.Speed = NumberInput();
 
                                             Console.Write("Please enter a engin size: ");
-                                            v.EnginSize= NumberInput();
+                                            v.EnginSize = NumberInput();
 
                                             Console.Write("Please enter a cylender numbers: ");
                                             v.Cylender = NumberInput();
 
-                                            Console.Write("Please enter a fuel type (Benzine, Diesel, Gas, Electric): ");
-                                            Fuel vfuel;
-                                            v.Fuel= v.ConvertToFuel(Console.ReadLine().ToUpper());
-                                            garage.Park(v);
+                                            
+                                            if (garage.Park(v) == true) { Console.WriteLine("Successfully parked the vehicle."); }else { Console.WriteLine("Something happen wrong and Vehicle not parked. \n Maybe the parking capacity is full."); }
+                                            Console.ReadKey();
                                             break;
                                         case 2: //Edit
                                             Console.Write("Please enter a licensePlate to edit vehicle information: ");

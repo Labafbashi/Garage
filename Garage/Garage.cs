@@ -86,21 +86,38 @@ namespace Garage
             return GetEnumerator();
         }
 
-        public void ListAll()
+        public void ListAllVehicle()
         {
             if (vehicles.Any(v => v is not null))
             {
-                Console.WriteLine("Garage Place \t License Plate \t Color \t Wheels no. \t Owner \t Speed \t Engin Size \t Cylender no. \t Fuel");
-                Console.WriteLine("============ \t ============= \t ===== \t ========== \t ===== \t ===== \t ========== \t ============ \t ====");
+                PrintHeader();
                 foreach (var v in vehicles)
                 {
-                    Console.WriteLine($"{v.Place} \t {v.LicensePlate} \t {v.Color} \t {v.WheelsNumber} \t {v.Owner} \t {v.Speed} \t {v.Cylender} \t {v.Fuel}");
+                    if (v is not null)
+                    {
+                        PrintVehicle(v);
+                    }
                 }
+                PrintFooter();
             }
             else
             {
                 Console.WriteLine("The Garage is empty!!!");
             }
+        }
+
+        public void PrintVehicle(T paramV)
+        {
+            Console.WriteLine($"{paramV.Place} \t {paramV.LicensePlate} \t {paramV.Color} \t {paramV.WheelsNumber} \t {paramV.Owner} \t {paramV.Speed} \t {paramV.EnginSize} \t {paramV.Cylender} \t {paramV.Fuel}");
+        }
+        public void PrintHeader()
+        {
+            Console.WriteLine("Garage Place \t License Plate \t Color \t Wheels no. \t Owner \t Speed \t Engin Size \t Cylender no. \t Fuel");
+            Console.WriteLine("============ \t ============= \t ===== \t ========== \t ===== \t ===== \t ========== \t ============ \t ====");
+        }
+        public void PrintFooter()
+        {
+            Console.WriteLine("End of the list, please press any key to continue.");
         }
     }
 }
