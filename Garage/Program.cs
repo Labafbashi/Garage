@@ -35,7 +35,7 @@ internal class Program
         findSMN.AddItemMenu("CustomSearch");
 
         Garage<Vehicle> garage = new Garage<Vehicle>("My Garage", capacity);
-        Vehicle v = new Vehicle();
+        Vehicle v;
         string answer;
         Vehicle fv;
 
@@ -93,6 +93,7 @@ internal class Program
                                             Console.ReadKey();
                                             break;
                                         case 2: //Search by Owner
+
                                             break;
                                         case 3: //Search by Type
                                             break;
@@ -151,6 +152,7 @@ internal class Program
                                         case 0:
                                             subLevel3Exit = false; break;
                                         case 1: //Add
+                                            v = new Vehicle();
                                             Console.WriteLine("\n\n ==> Add new Vehicle <==");
                                             Console.Write("Please enter a place of vehicle in the Garage: ");
                                             v.Place = Console.ReadLine();
@@ -166,7 +168,7 @@ internal class Program
 
                                             Console.Write("Please enter a fuel type (Benzine, Diesel, Gas, Electric): ");
                                             Fuel vfuel;
-                                            v.Fuel = v.ConvertToFuel(Console.ReadLine().ToUpper());
+                                            v.Fuel = Vehicle.ConvertToFuel(Console.ReadLine().ToUpper());
 
                                             Console.Write("Please enter a wheels number: ");
                                             v.WheelsNumber = NumberInput();
@@ -236,7 +238,7 @@ internal class Program
                                                 Console.WriteLine("fuel type (Benzine, Diesel, Gas, Electric): ");
                                                 WriteValue(fv.Fuel.ToString());
                                                 answer = Console.ReadLine();
-                                                if (answer != "") { fv.Fuel = v.ConvertToFuel(answer.ToUpper()); }
+                                                if (answer != "") { fv.Fuel = Vehicle.ConvertToFuel(answer.ToUpper()); }
 
                                             }
                                             Console.ReadKey();

@@ -29,13 +29,13 @@ namespace Garage
 
         public int Capacity => capacity;
 
-        public Vehicle FindVehicle(string lp)
+        public Vehicle FindVehicle(string searchWord)
         {
 
             if (!vehicles.Any(v => v is not null)) return null;
             foreach (var v in vehicles) 
             {
-                if (v.LicensePlate == lp)
+                if (v.LicensePlate == searchWord)
                 {
                     return v;
                 }
@@ -106,14 +106,15 @@ namespace Garage
             }
         }
 
-        public void PrintVehicle(T paramV)
-        {
-            Console.WriteLine($"{paramV.Place} \t {paramV.LicensePlate} \t {paramV.Color} \t {paramV.WheelsNumber} \t {paramV.Owner} \t {paramV.Speed} \t {paramV.EnginSize} \t {paramV.Cylender} \t {paramV.Fuel}");
-        }
+        
         public void PrintHeader()
         {
             Console.WriteLine("Garage Place \t License Plate \t Color \t Wheels no. \t Owner \t Speed \t Engin Size \t Cylender no. \t Fuel");
             Console.WriteLine("============ \t ============= \t ===== \t ========== \t ===== \t ===== \t ========== \t ============ \t ====");
+        }
+        public void PrintVehicle(T paramV)
+        {
+            Console.WriteLine($"{paramV.Place} \t {paramV.LicensePlate} \t {paramV.Color} \t {paramV.WheelsNumber} \t {paramV.Owner} \t {paramV.Speed} \t {paramV.EnginSize} \t {paramV.Cylender} \t {paramV.Fuel}");
         }
         public void PrintFooter()
         {

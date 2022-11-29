@@ -68,7 +68,7 @@ namespace Garage
         public int Cylender { get => cylender; set => cylender = value; }
         internal Fuel Fuel { get => fuel; set => fuel = value; }
 
-        public Fuel ConvertToFuel(string str)
+        public static Fuel ConvertToFuel(string str)
         {
             switch (str)
             {
