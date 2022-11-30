@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Program;
+using CompName = Program.CompanyName;
 
 namespace Garage
 {
@@ -13,21 +15,53 @@ namespace Garage
         Individual,
         Racing
     }   
-    internal class Motorcycle : Vehicle
+    internal class Motorcycle
     {
-        string engine;
-        CompanyName brand;
+        CompName brand;
         MotorType type;
 
-        public Motorcycle(string place, string licensePlate, string color, int wheelsNumber, string owner, int speed, int enginSize, int cylender, Fuel fuel, string engine, CompanyName brand, MotorType type) : base(place, licensePlate, color, wheelsNumber, owner, speed, enginSize, cylender, fuel)
+        public Motorcycle(CompName brand, MotorType type)
         {
-            this.engine = engine;
             this.brand = brand;
             this.type = type;
         }
 
-        public string Engine { get => engine; set => engine = value; }
-        internal CompanyName Brand { get => brand; set => brand = value; }
+        internal CompName Brand { get => brand; set => brand = value; }
         internal MotorType Type { get => type; set => type = value; }
+
+        public static MotorType Parse(string input)
+        {
+            switch (input)
+            {
+                case "Classic":
+                    return MotorType.Classic;
+                case "Custom":
+                    return MotorType.Custom;
+                case "Individual":
+                    return MotorType.Individual;
+                case "Racing":
+                    return MotorType.Racing;
+                default:
+                    return MotorType.Classic;
+            }
+        }
+        public static void MotorTypePrint()
+        {
+            int counter = 0;
+            for (int i = 0; i < 60; i++) { Console.Write("-"); }
+            Console.WriteLine();
+            foreach (string name in Enum.GetNames(typeof(MotorType)))
+            {
+                Console.Write($"| {name,15} |");
+                if (counter % 3 == 2)
+                {
+                    Console.WriteLine();
+                }
+                counter++;
+            }
+            Console.WriteLine();
+            for (int i = 0; i < 60; i++) { Console.Write("-"); }
+            Console.WriteLine() ;
+        }
     }
 }

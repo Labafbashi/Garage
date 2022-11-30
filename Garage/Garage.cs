@@ -29,16 +29,26 @@ namespace Garage
 
         public int Capacity => capacity;
 
-        public Vehicle FindVehicle(string searchWord)
+        public Vehicle FindVehicle(string field, string searchWord)
         {
-
             if (!vehicles.Any(v => v is not null)) return null;
             foreach (var v in vehicles) 
             {
-                if (v.LicensePlate == searchWord)
+                switch (field)
                 {
-                    return v;
+                    case "LicensePlate":
+                        if (v.LicensePlate == searchWord) { return v; }
+                        break;
+                    case "Owner":
+                        if (v.Owner == searchWord) { return v; }
+                        break;
+                    case "Color":
+                        if (v.Color == searchWord) { return v; }
+                        break;
+                    default:
+                         return null;
                 }
+                
             }
             return null;
         }
@@ -102,7 +112,7 @@ namespace Garage
             }
             else
             {
-                Console.WriteLine("The Garage is empty!!!");
+                Program.WriteAlert("The Garage is empty!!!");
             }
         }
 

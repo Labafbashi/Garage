@@ -15,22 +15,6 @@ namespace Garage
         Electric
     }
 
-    enum CompanyName
-    {
-        ACSchnitzer,
-        Adler,
-        Alfer,
-        Bajai,
-        BMW,
-        Boxer,
-        Ducati,
-        HarleyDavidson,
-        Kawasaki,
-        Peugeot,
-        Saxon,
-        Suzuki,
-        Yamaha
-    }
     internal class Vehicle 
     {
         string place;

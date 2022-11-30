@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Program;
+using CompName = Program.CompanyName;
 
 namespace Garage
 {
@@ -15,18 +17,42 @@ namespace Garage
         Unpowered,
         Jet
     }
-    internal class Airplane : Vehicle
+    internal class Airplane
     {
         AirplaneType type;
-        CompanyName company;
+        CompName company;
 
-        public Airplane(string place, string licensePlate, string color, int wheelsNumber, string owner, int speed, int enginSize, int cylender, Fuel fuel, AirplaneType type, CompanyName company) : base(place, licensePlate, color, wheelsNumber, owner, speed, enginSize, cylender, fuel)
+        public Airplane() { }
+
+        public Airplane(AirplaneType type, CompName company)
         {
             this.type = type;
             this.company = company;
         }
 
         internal AirplaneType Type { get => type; set => type = value; }
-        internal CompanyName Company { get => company; set => company = value; }
+        internal CompName Company { get => company; set => company = value; }
+
+        public static AirplaneType Parse(string input)
+        {
+            switch (input)
+            {
+                case "Passenger":
+                    return AirplaneType.Passenger;
+                case "Freight":
+                    return AirplaneType.Freight;
+                case "Fighter":
+                    return AirplaneType.Fighter;
+                case "Powered":
+                    return AirplaneType.Powered;
+                case "Unpowered":
+                    return AirplaneType.Unpowered;
+                case "Jet":
+                    return AirplaneType.Jet;
+                default:
+                    return AirplaneType.Passenger;
+            }
+        }
+
     }
 }
